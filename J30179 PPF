@@ -1,0 +1,410 @@
+TICKET 30179 Pre populated form
+ COMMONWEALTH OF MASSACHUSETTS
+EXECUTIVE OFFICE OF HEALTH AND HUMAN SERVICES
+
+JIRA 30179 – MA21 Prepopulated Form (PPF)
+
+Scope, Use Cases, Functional Requirements 
+– 
+
+MA21 System Change Specifications Document
+
+
+  
+
+
+
+
+
+
+
+	
+
+	
+Analyst: Arun Kumar Kotla	 MassHealth MA21 Maintenance
+
+Approval / Distribution / Interaction
+Phase/Role 	Contact(s)
+Scope / Use Cases	Mayvorly Ramirez
+Functional Requirements	Mayvorly Ramirez
+Observers	Name
+MA21 Management 	Susan Kelly-Madden, Amanda Joubert
+QA Supervisor	Alyssa Alexander
+UAT - SME	
+Partners / External Systems:	Description of Impact:	Contact /Imbedded Email
+CFR	N	
+CHPR	N	
+CNS	Y	
+CommCare	N	
+DOR	N	
+eMBR	N	
+HSNO	N	
+IER	N	
+Ins. Partnership	N	
+ITD	N	
+MAP	N	
+MMARS	N	
+MMIS	N	
+Other	N	
+Reporting	N	
+RMV	N	
+SLR	N	
+SSA	N	
+TPL/HIN	N	
+Vital Stats	N	
+Warehouse	N	
+
+ 
+Revision History
+Date	Version	Description	Author
+12/19/2025	1.0	Initial Draft including Scope, Use Cases, and Functional Requirements for MA21 Prepopulated Form (PPF) enhancement.	Arun Kumar Kotla
+01/09/2026	1.1	Updated worksheet based on business review comments.	Arun Kumar Kotla
+
+
+Impact Analysis
+Requirements	Yes/No/NA/Comments
+Are MoveIT interfaces required?
+Must fill in MoveIT section 4.6 below	NO
+Is User Acceptance Testing (UAT) recommended?	YES
+Volume / No of records affected due to existing issue? Attach reports to indicate the records affected (if applicable)	NO
+Downstream Impact Analysis performed?  	YES
+One time program needed to clean up affected existing cases?	NO	
+Notices involved in this issue?  
+Must Fill CNS section Below and Section 3.2	YES
+Need for reprocessing notices?   	NO
+Impact to MCP/MAP BEnefitService Webservice? 	NO
+Impact to MMIS middleware?	NO
+Table Changes (TABLE-GENERIC or BIG-TABLE-GENEIC)?	NO
+Any other systems affected?	NO
+
+ 
+CNS information provided in Jira
+New Fields in Jira completed by Requestor
+Notice Change Type	Needed? (Yes or No)
+New notice	NO
+Change notice text (static text only)	YES
+Change notice trigger	YES 
+Change notice data element (ie, new fragment needed)	YES
+Add or remove insert to a notice	NO
+Esubmission required	NO
+
+CNS Impact Analysis
+Notice Change Type	Notice in MA21 or CNS?	MA21/CNS Work Required
+New Notice	Neither	MA21 payload development and CNS CR
+Change notice text (static text only)	CNS	CNS CR only
+	MA21-only	MA21 text change
+	MA21 in transition to CNS	MA21 text change and CNS CR. Also coordinate with IE&E Team for CNS template update
+	Monsters (Highly complex)	Update MA21 text and coordinate with IE&E Team for CNS template update
+Change notice trigger	CNS	MA21 payload development/logic change and CNS CR
+	MA21-only	MA21 logic change
+	MA21 in transition to CNS	MA21 payload development/logic change and CNS CR. Also coordinate with IE&E Team for CNS template update
+	Monsters (Highly complex)	Update MA21 logic change and coordinate with IE&E Team for CNS template update
+Change notice data element (ie, new fragment needed, insert group)	CNS	MA21 payload development/logic change and CNS CR
+	MA21-only	MA21 logic change
+	MA21 in transition to CNS	MA21 payload development/logic change and CNS CR. Also coordinate with IE&E Team for CNS template update
+	Monsters (Highly complex)	Update MA21 logic change and coordinate with IE&E Team for CNS template update
+Esubmission	CNS	MA21 webservice development/payload development and CNS CR for conditional fragment
+	MA21-only	MA21 webservice development/logic change
+	MA21 in transition to CNS	MA21 webservice development/payload development and CNS CR for conditional fragment. Also coordinate with IE&E Team for CNS template update
+
+ 
+Table of Contents	
+
+1.	Purpose of this Document	6
+2.	Scope	6
+2.1	Use Case Scenarios	7
+3.	Functional Requirements	8
+3.1	Decision Tree Changes	8
+3.2	Notices	8
+3.2.1	Paragraphs or Complete Notice – (Draft / Approved)	8
+3.2.2	Notice Master Document Updates	8
+3.2.3	Stacking	8
+3.2.4	Order of Paragraphs	8
+3.2.5	Downgrade Reasons	9
+3.2.6	Closing and Denial Reasons	9
+3.3	Reports	9
+3.4	System Screen Updates (Queries, Maintenance & Events)	9
+4.	Transition	9
+4.1	Table Updates (include seed table updates)	9
+4.2	Event Code Changes	9
+4.3	Security Updates	10
+4.3.1	User Security – (Natural Security – Define for New JCL Jobs)	10
+4.3.2	Function Security – (MA21 Security – Functions, Groups, or Users)	10
+4.3.3	Dataset Security	10
+4.4	Production Control	11
+4.4.1	Operational Instructions	11
+4.4.2	JCL, Procedures, Parameters (TEST and PROD JCL & Parm Members)	11
+4.4.3	Batch Process Considerations and Scheduling	11
+4.5	Additional Required UP Artifacts	11
+4.6	MoveIT Interfaces	12
+4.7	Post Production Validation	12
+4.7.1	Checklist to perform Post Production Validation	12
+5.	Appendix A – Original JIRA Headline and Description	13
+6.	Appendix B – Additional Documentation	13
+
+
+ 
+1.	Purpose of this Document
+This document is to be used by the MA21 Project Lead to accumulate and review information from contributors as part of the U.P. documentation process.  This document includes Scope, Use Cases, Functional Requirements, Transition and supporting information.
+
+
+2.	Scope 
+State Business Need or Issue:
+Currently, the MA21 system sends out a blank renewal form for members, when it is time for renewal. This process does not leverage existing verified data available within MA21.The business requires the ability to generate a Prepopulated Renewal Form (PPF) containing available verified member and household data to improve accuracy, efficiency, and member experience.
+How it works now or the cause:
+At present, when a member’s renewal period arrives, MA21 identifies the case and triggers the Common Noticing Solution (CNS) to generate    a cover letter and the print vendor inserts a blank renewal form.and send a blank renewal form.
+1.	The current process does not extract or include any pre-existing data elements listed in each of the Data Areas identified in the business provided PPF template.
+2.	As a result, members must manually fill in all fields on the form, leading to incomplete or inconsistent data submissions.
+How it will work:
+After implementation, MA21 will build a process to generate and transmit Prepopulated Form (PPF) data elements to CNS through the existing CNS integration process.
+1.	When members fall under the paper renewal path, MA21 will compile data elements listed in each of the Data Areas identified in the business-provided PPF template. verified   data available in its system across the data elements listed in each of the Data Areas identified in the business provided PPF template and include it in the PPF payload.  
+1.2.	This includes member and household information sourced from applicable MA21 subsystems based on availability and eligibility for prepopulation.
+2.3.	MA21 will send this structured data to CNS, which will render and print the renewal form with prepopulated member details.
+3.4.	This ensures members receive a renewal form that already contains known and verified   information, requiring them only to review and update changes if needed.
+4.5.	For auto-renewal path members, MA21 will not send PPF data for printing and mailing.The PPF may still be generated and made viewable in MyServices with the associated cover letter, consistent with current HIX behavior. to CNS, as those renewals are handled automatically  .
+Comments:
+1.	MA21 will follow the data elements listed in each of the Data Areas identified in the business provided PPF template.
+2.	Please look into Appendix B for the PrePopulated Template
+3.	Additional Business Requirements (Masking/Conditional Data):
+	Apply masking for sensitive identifiers on the PPF when rendered (e.g., partial masking with Xs as shown in business sample).
+	Conditionally populate and send certain data elements only when the preceding question response is 'Yes' per business rules.
+ 
+2.1	Use Case Scenarios
+U30179 - 01 Goal – Generate Prepopulated Renewal Form (PPF)
+Person Actors:  Members   (ARDs), PSIs receive the cover letter only.
+Prepopulated Renewal Forms are generated for ARDs only. PSIs do not receive the PPF and will receive only the associated cover letter.
+System Actors:  MA21 System & CNS
+Pre-Conditions: 
+1.	MA21 Member Renewal is due.
+2.	Member is on the paper renewal path.
+3.	Member Verified data exists in MA21 for relevant data elements listed in each of the Data Areas identified in the business provided PPF template.
+4.	MA21 and CNS integration is functional.
+Main Flow:
+1.	MA21 identifies the member due for renewal   and determines the applicable renewal selection type (paper renewal (or) auto-renewal).
+2.	MA21 checks that the member follows the paper renewal path.
+3.	MA21 gathers  available verified member data elements listed in each of the Data Areas identified in the business provided PPF template.
+4.	MA21 formats the data according to the CNS schema/mapping for the PPF payload.
+5.	MA21 sends the PPF payload to CNS through the integration process.
+6.	CNS receives the payload and renders the prepopulated renewal form using the CNS template.
+7.	CNS renders the Prepopulated Renewal Form and delivers it according to delivery preferences, including print, mail, electronic delivery and worker copies as applicable. prints   and Mail the PPF to the member  
+7.8.	CNS mails or electronically delivers the Prepopulated Renewal Form to ARDs only and PSIs receive the cover letter without the PPF.
+Alternate Flow #:
+1.	If some data elements are missing, MA21 sends only available data elements listed in each of the Data Areas identified in the business provided PPF template.
+2.	CNS generates form with prepopulated fields where data exists, When CNS Shows no data available Then, member manually completes missing fields.
+Exception Flow #:
+1.	MA21 identifies member is on auto-renewal path.
+2.	No PPF payload is sent to CNS.
+3.	MA21 marks renewal as auto-processed, no paper form is generated.
+Post Success Condition:
+1.	Member receives a prepopulated renewal form with all available verified data filled in.
+2.	CNS successfully logs the PPF generation event.
+
+
+U30179 - 02 Goal - Mask and Conditionally Populate PPF Data Elements
+Person Actors:   Members
+System Actors:  MA21 System & CNS
+Pre-Conditions:  
+1.	Member is on the paper   renewal path and is due for renewal and has been identified as following the paper renewal selection path..
+2.	MA21 has available verified data for one or more PPF data elements.
+3.	Business rules identify which fields must be masked and which are conditional based on preceding questions.
+4.	MA21→CNS integration for PPF payload is available.
+Main Flow:
+1.	MA21 assembles PPF data elements per template/mapping/schema.
+2.	For each sensitive field, MA21 applies the required masking rule before placing the value in the CNS payload (e.g., show only permitted digits/characters and mask remaining characters).
+3.	For each conditional section, MA21 evaluates the preceding question:
+	If the preceding question is answered “Yes”, MA21 includes the dependent follow-up data elements (if verified/available).
+	If the preceding question is answered “No”, MA21 does not include the dependent follow-up data elements (CNS should display them as blank/not applicable).
+4.	MA21 transmits the masked/conditional PPF payload to CNS.
+5.	CNS renders the PPF using the CNS template and prints/mails the form.
+Alternate Flow #:
+1.	If a conditional question is “Yes” but dependent data is not available/verified, MA21 sends the section with ‘No Data Available’/blank values as applicable, while still honoring masking rules
+Exception Flow #:
+1.	If the member is on the auto-renewal path, MA21 does not send the PPF payload to CNS.
+Post Success Condition:
+1.	Member receives a PPF where sensitive fields are masked and conditional sections appear only when applicable.
+2.	MA21 logs payload generation and any masking/conditional rule application outcomes for audit/traceability.
+
+3.	Functional Requirements 
+Describe from a users perspective, the functions that the system is required to perform.
+Functional Requirement  Number	Detailed Functional Requirement.  
+
+J30179 – 01 - A	Generate Prepopulated Renewal Form (PPF): The system must generate a prepopulated renewal form for members who follow the paper renewal path, using verified   data available in MA21.
+J30179 – 01 - B	Identify Eligible Members: MA21 must   identify members due for renewal and determine if they are on the paper renewal path. Only these members will receive the prepopulated form.
+
+J30179 – 01- C	ARD and PSI Handling: MA21 must generate and send Prepopulated Renewal Forms only for ARDs. PSIs must receive only the associated cover letter and no PPF data
+J30179 – 01- DC	Payload Creation for CNS: MA21 must format and send verifie  d member data to CNS according to the agreed PPF Template, Schema and mapping, ensuring all Prepopulated fields are accurately filled if available.
+
+J30179 – 01- ED	Partial Data Handling: If only partial verified data is available, MA21 must still generate the PPF payload for CNS, prepopulating only available fields. Members should manually complete any missing information.
+
+J30179 – 01- FE	Exception Handling: If a member is on the auto-renewal path or is identified as a PSI, MA21 must not send PPF payload data to CNS for printing and mailing., MA21 should not send PPF payload Data  .
+
+J30179 – 01- GF	Audit and Logging: MA21 must log each PPF generation event, including member ID, payload details, and timestamp, to ensure traceability and support reporting/audit requirements.
+J30179 – 01- HG	Integration Verification: MA21 must include the appropriate CNS insert group number within the payload to support print integration. MA21 will coordinate with the CNS team to obtain and configure the correct insert group number. MA21   must ensure that CNS receives the payload successfully and can render the prepopulated form without errors. Any failures should trigger error handling or alerts.
+J30179 – 02 - A	Masking & Conditional Data Rules: MA21 must apply business-defined masking rules for sensitive data elements and conditionally include or omit dependent data elements in the PPF payload based on preceding question responses (e.g., only send follow-up values when the controlling question is 'Yes').
+
+
+3.1	Decision Tree Changes
+Chart #	Description of Change (Exit Point, Benefit affected)	Imbedded Chart
+N/A		
+		
+		
+
+3.2	Notices
+New or
+Change	Notice Type	CNS Enabled (Y/N)	Description of Change 	Received Final English Text (Y/N)	Received Final Spanish Text (Y/N)
+Change	Prepopulated Renewal Form(PPF)	Y	MA21 will send verified available member data to CNS to generate a Prepopulated Renewal Form for members on the paper renewal path. This form replaces the current blank renewal form, improves accuracy and member experience, and supports federal compliance requirements mandating the use of prepopulated renewal forms when data is available. and improves accuracy   and member experience.	N/A	N/A
+					
+					
+
+
+3.2.1	Paragraphs or Complete Notice – (Draft / Approved)
+N/A
+3.2.2	Notice Master Document Updates
+N/A
+3.2.3	Stacking
+N/A
+3.2.4	Order of Paragraphs
+N/A
+3.2.5	Downgrade Reasons
+N/A
+3.2.6	Closing and Denial Reasons
+           N/A
+
+3.3	Reports
+New or
+Change	ViewDirect  One Time	Report Name	Report Description 	Imbedded Mock-Up
+N/A				
+				
+				
+
+
+
+3.4	System Screen Updates (Queries, Maintenance & Events) 
+
+
+4.	Transition
+4.1	Table Updates (include seed table updates)
+Table Name	Table Type	Table Code	Description 
+N/A			
+			
+			
+			
+
+4.2	Event Code Changes 
+Type Key:  EVENT CODE
+New or
+Change	Event Code	Description
+
+		
+		
+		
+
+
+
+
+4.3	Security Updates
+
+4.3.1	User Security – (Natural Security – Define for New JCL Jobs)
+New or
+Change	User or Group ID	Description (80 Characters Maximum)                                                                           
+(This includes any new Jobs that need to be Defined if JCL executes Natural)
+N/A	DMA-JOB	
+		
+		
+
+4.3.2	Function Security – (MA21 Security – Functions, Groups, or Users)
+New or
+Change	Function ID/User ID	Description (80 Characters Maximum)	Linked Users or Groups	Access Type: Display, Modify, Add, Purge or N/A
+N/A				
+				
+				
+
+4.3.3	Dataset Security
+Dataset Name or 
+High Level Qualifier	Description	User RACF ID or Group ID	Access: Read, Write, Alter, Delete
+N/A			
+			
+			
+
+
+ 
+4.4	Production Control
+4.4.1	Operational Instructions  
+Describe Any Production Control Instructions
+N/A
+
+
+
+
+4.4.2	JCL, Procedures, Parameters (TEST and PROD JCL & Parm Members) 
+Type Key:  JCL, Proc, Parm 
+New or
+Change	JCL
+Procedure
+Parameter 
+Name	
+Type	Description including JCLDOC information.
+
+N/A			
+			
+
+4.4.3	Batch Process Considerations and Scheduling 
+Process Considerations and Scheduling
+N/A
+
+
+
+4.5	Additional Required UP Artifacts
+Artifact File Name	Description of Artifact
+N/A	
+	
+	
+
+ 
+4.6	MoveIT Interfaces 
+(Analyst and Developer coordination may be needed)
+Note: Once this section is completed, please copy and send to Mike Conena. 
+Agency Name	Sending file name	Receiving file name	Frequency (daily, weekly, monthly, etc)	Timing (time of day)	Dependencies (jobs that need to run before and/or after)
+N/A					
+					
+					
+
+4.7	Post Production Validation 
+4.7.1	Checklist to perform Post Production Validation
+It is the assigned Analysts’ responsibility to verify that production implementation was completed successfully.  Analyst should plan ahead to identify what kinds of transactions to view that will validate functionality. You are responsible to work with DBA, QA, MMIS and Production Control and verify that each of the following has been completed successfully.
+Post Production Verification Points	Completed (Y, N, N/A) 
+Add comment if  N or N/A
+One time program / conversion execution	N/A
+Security changes	N/A
+Table changes	N/A
+JCL changes	N/A
+Notice changes  	Y
+Program migrations	Y
+Pre-Identified Transactions are completed and accurate	Y
+Calculations are completed and accurate	NA
+Any other items not mentioned but covered in this worksheet	Y
+ 
+ 
+5.	Appendix A – Original JIRA Headline and Description
+Note:  This section is a snapshot of the original JIRA and does not necessarily represent the final Scope, Business Requirements, Functional Specifications, or Technical Specifications. 
+JIRA Number	Requested By	JIRA Title
+J30179	Amanda Joubert	MA21 Pre-Populated Form
+Assigned to and comments	JIRA Description
+Arun Kumar Kotla	MA21 needs to generate a pre-populated form for the traditional population, instead of a blank renewal. The PPF needs to populate if any current and verified data elements listed in each of the Data Areas identified in the business provided PPF template.Currently the MA21 system sends out a blank renewal when it's time to renew. 
+MA21 must build a process to generate a prepopulated renewal form through the CNS integration process.
+1.	Anytime a member drop down the paper renewal path,
+MA21 must provide CNS with the PPF data elements as you have provided to us
+2.	When Members go down the Auto renewal path
+MA21 is not expected to provide CNS with the PPF data elements as you have provided to us
+
+
+6.	Appendix B – Additional Documentation
+
+Section 1: Template Sheet
+ 
+Section 2: Mapping Sheet
+ 
+Section 3: Schema Sheet
+ 
+Section 4 : SACA-2-MA21_pre-ESO Template Sheet
+ 
