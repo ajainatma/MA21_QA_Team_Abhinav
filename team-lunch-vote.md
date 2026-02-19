@@ -1,12 +1,13 @@
-# Team Lunch Vote
+# Team Lunch Vote on 3 April 2026
+🥗 Potluck in the office
+- Abhinav
+- Bob
+📦 Order food to the office
+- Carol
 
-## Date of Lunch
+🍽️ Eat out at a restaurant
+- Dave
 
-**April 3**  
-
-## Sample Votes:
-- Vote 1: Option A
-- Vote 2: Option B
 
 ## Voting Instructions
 Please cast your vote by selecting one of the options above.
