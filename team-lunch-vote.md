@@ -1,12 +1,12 @@
-### 🥗 Potluck in the office
-- Abhinav
-- Bob
+# Team Lunch Vote
 
-### 📦 Order food to the office
-- Carol
+## Date of Lunch
 
-### 🍽️ Eat out at a restaurant
-- Dave
+**April 3**  
 
----
-*Votes recorded on 2026-02-19 15:30:57 UTC*
+## Sample Votes:
+- Vote 1: Option A
+- Vote 2: Option B
+
+## Voting Instructions
+Please cast your vote by selecting one of the options above.
