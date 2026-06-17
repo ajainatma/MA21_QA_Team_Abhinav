@@ -1,0 +1,7 @@
+test_case_id,step_order,action,artifact_to_store,pass_criteria
+TC-VN-001,1,"Export NSD source notice text for this scenario","/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-001.txt","NSD text snapshot captured and version tagged"
+TC-VN-001,2,"Generate notice via member create agent flow","/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-001.txt","Generated notice saved and timestamped"
+TC-VN-001,3,"Run rule-by-rule comparison using comparison_rules.csv","/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-001.csv","All critical rules pass"
+TC-VN-001,4,"Perform native-language Vietnamese review","/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-001.txt","Grammar, terminology, and intent accepted"
+TC-VN-001,5,"Log defects and final status","/vietnamese_notice_test_suite/results_tracker.csv","Any mismatch has category and owner"
+TC-VN-ALL,6,"Repeat steps 1-5 for TC-VN-002 through TC-VN-006","/vietnamese_notice_test_suite/artifacts/*","All six cases executed"
