@@ -1,10 +1,11 @@
 Vietnamese NSD vs Generated Notice Validation
 
 Pass/Fail Criteria
-1. A test case passes only when all Critical and High severity rules in comparison_rules.csv are Pass.
-2. A test case is Conditional Pass when only Medium rules fail and business approves the variance.
-3. A test case fails when any Critical/High rule fails, or when Vietnamese language review is rejected.
-4. Overall suite pass requires all six test cases (TC-VN-001 to TC-VN-006) to pass.
+1. Every test case must validate all rules (R01-R09), including Medium severity rules.
+2. A test case passes only when all Critical and High severity rules in comparison_rules.csv are Pass.
+3. A test case is Conditional Pass only when Critical/High rules pass and only Medium rules fail with business approval.
+4. A test case fails when any Critical/High rule fails, or when Vietnamese language review is rejected.
+5. Overall suite pass requires all six test cases (TC-VN-001 to TC-VN-006) to pass.
 
 Mismatch Categories
 - Mapping issue: wrong source field mapped to output field/value.

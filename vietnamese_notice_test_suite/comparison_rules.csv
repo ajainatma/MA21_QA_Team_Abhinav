@@ -1,7 +1,7 @@
 rule_id,category,check_name,rule_definition,expected_result,severity
 R01,Field Completeness,All required fields populated,"Every mandatory NSD field mapped to notice output; no required field omitted unless NSD explicitly marks it optional.",100% required fields present,Critical
 R02,Text Accuracy,Exact Vietnamese static text match,"Vietnamese static notice lines in generated output must exactly match approved NSD source strings.",Exact string match,High
-R03,Placeholder Handling,No unresolved placeholders,"Tokens like {{member_name}} or <DATE> must be replaced with runtime values or intentionally blanked per NSD.",0 unresolved placeholders,Critical
+R03,Placeholder Handling,No unresolved placeholders,"Any template token syntax used by the production notice template must be resolved to runtime values or intentionally blanked per NSD rules.",0 unresolved placeholders,Critical
 R04,Punctuation,Approved punctuation and spacing,"Vietnamese punctuation, spacing, and sentence separators must match NSD-approved format.",No punctuation variance beyond approved style,Medium
 R05,Formatting,Section and line formatting consistency,"Section headers, bullet structure, and ordered blocks follow NSD layout expectations.",Layout order preserved,Medium
 R06,Dynamic Values,Member-specific data correctness,"Name, dates, IDs, and conditional values match source member profile for each test case.",100% value accuracy,Critical
