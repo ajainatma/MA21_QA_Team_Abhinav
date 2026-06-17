@@ -1,0 +1,7 @@
+test_case_id,member_id,member_full_name,primary_language,edge_case_focus,optional_sections_expected,notes
+TC-VN-001,MEM-9001,"Nguyễn Thị Ánh",vi,"Baseline Vietnamese diacritics",Y,"Standard ARD case with complete profile data"
+TC-VN-002,MEM-9002,"Trần Đặng Phương Uyên",vi,"Long name with multiple diacritics",Y,"Validates line wrapping and no truncation"
+TC-VN-003,MEM-9003,"Le Van Minh (Lê Văn Minh)",vi,"Mixed Latin and Vietnamese forms",N,"Checks consistent canonical name selection"
+TC-VN-004,MEM-9004,"Đỗ Hải-Yến",vi,"Hyphen and special Vietnamese characters",Y,"Validates punctuation and character integrity"
+TC-VN-005,MEM-9005,"Bùi Gia Hân",vi,"Optional section suppression",N,"Dependent section must be omitted when trigger=No"
+TC-VN-006,MEM-9006,"Phạm Quốc Cường",vi,"Conditional section inclusion",Y,"Dependent section must be included when trigger=Yes"
