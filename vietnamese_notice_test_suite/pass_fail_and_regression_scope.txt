@@ -1,0 +1,25 @@
+Vietnamese NSD vs Generated Notice Validation
+
+Pass/Fail Criteria
+1. A test case passes only when all Critical and High severity rules in comparison_rules.csv are Pass.
+2. A test case is Conditional Pass when only Medium rules fail and business approves the variance.
+3. A test case fails when any Critical/High rule fails, or when Vietnamese language review is rejected.
+4. Overall suite pass requires all six test cases (TC-VN-001 to TC-VN-006) to pass.
+
+Mismatch Categories
+- Mapping issue: wrong source field mapped to output field/value.
+- Template issue: incorrect section order, missing/extra blocks, punctuation/layout mismatch.
+- Encoding issue: UTF-8 rendering defects, mojibake, corrupted diacritics, truncation.
+- Translation issue: incorrect Vietnamese wording, grammar, terminology, or intent mismatch.
+
+Regression Scope
+- Re-run full suite for: NSD template updates, CNS template changes, mapping/schema changes, localization updates, and rendering engine upgrades.
+- Re-run impacted subset for: targeted field mapping changes affecting specific sections.
+- Include at least one baseline full-suite run every release cycle.
+- Archive NSD snapshot, generated output, comparison sheet, and language review notes for each run.
+
+Execution Notes
+- Place NSD source artifacts under /vietnamese_notice_test_suite/artifacts/nsd_source/
+- Place generated notices under /vietnamese_notice_test_suite/artifacts/generated_notice/
+- Place per-case comparison outputs under /vietnamese_notice_test_suite/artifacts/comparison/
+- Place Vietnamese reviewer comments under /vietnamese_notice_test_suite/artifacts/language_review/
