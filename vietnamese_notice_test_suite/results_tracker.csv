@@ -1,0 +1,9 @@
+result_id,test_case_id,rule_id,status,mismatch_category,mismatch_summary,source_reference,generated_reference,owner,defect_id
+RES-001,TC-VN-001,R01,Pending,None,,,,, 
+RES-002,TC-VN-001,R02,Pending,None,,,,, 
+RES-003,TC-VN-001,R07,Pending,None,,,,, 
+RES-004,TC-VN-002,R08,Pending,None,,,,, 
+RES-005,TC-VN-003,R06,Pending,None,,,,, 
+RES-006,TC-VN-004,R04,Pending,None,,,,, 
+RES-007,TC-VN-005,R05,Pending,None,,,,, 
+RES-008,TC-VN-006,R09,Pending,None,,,,, 
