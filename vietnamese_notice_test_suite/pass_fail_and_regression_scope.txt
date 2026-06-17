@@ -24,3 +24,9 @@ Execution Notes
 - Place generated notices under /vietnamese_notice_test_suite/artifacts/generated_notice/
 - Place per-case comparison outputs under /vietnamese_notice_test_suite/artifacts/comparison/
 - Place Vietnamese reviewer comments under /vietnamese_notice_test_suite/artifacts/language_review/
+
+Results Tracker Status Values
+- Pending: Not yet executed.
+- Pass: All validated rules for the case pass.
+- Conditional Pass: Only Medium severity rules fail with documented business approval.
+- Fail: One or more Critical/High rules fail, or language review fails.

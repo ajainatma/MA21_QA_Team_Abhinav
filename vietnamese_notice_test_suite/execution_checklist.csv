@@ -1,7 +1,31 @@
 test_case_id,step_order,action,artifact_to_store,pass_criteria
-TC-VN-001,1,"Export NSD source notice text for this scenario","/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-001.txt","NSD text snapshot captured and version tagged"
-TC-VN-001,2,"Generate notice via member create agent flow","/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-001.txt","Generated notice saved and timestamped"
-TC-VN-001,3,"Run rule-by-rule comparison using comparison_rules.csv","/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-001.csv","All critical rules pass"
-TC-VN-001,4,"Perform native-language Vietnamese review","/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-001.txt","Grammar, terminology, and intent accepted"
-TC-VN-001,5,"Log defects and final status","/vietnamese_notice_test_suite/results_tracker.csv","Any mismatch has category and owner"
-TC-VN-ALL,6,"Repeat steps 1-5 for TC-VN-002 through TC-VN-006","/vietnamese_notice_test_suite/artifacts/*","All six cases executed"
+TC-VN-001,1,Export NSD source notice text for this scenario,/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-001.txt,NSD text snapshot captured and version tagged
+TC-VN-001,2,Generate notice via member create agent flow,/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-001.txt,Generated notice saved and timestamped
+TC-VN-001,3,Run rule-by-rule comparison using comparison_rules.csv,/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-001.csv,All critical and high rules pass; medium reviewed
+TC-VN-001,4,Perform native-language Vietnamese review,/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-001.txt,"Grammar, terminology, and intent accepted"
+TC-VN-001,5,Log defects and final status in results tracker,/vietnamese_notice_test_suite/results_tracker.csv,All mismatches categorized and linked to defect ID when opened
+TC-VN-002,1,Export NSD source notice text for this scenario,/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-002.txt,NSD text snapshot captured and version tagged
+TC-VN-002,2,Generate notice via member create agent flow,/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-002.txt,Generated notice saved and timestamped
+TC-VN-002,3,Run rule-by-rule comparison using comparison_rules.csv,/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-002.csv,All critical and high rules pass; medium reviewed
+TC-VN-002,4,Perform native-language Vietnamese review,/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-002.txt,"Grammar, terminology, and intent accepted"
+TC-VN-002,5,Log defects and final status in results tracker,/vietnamese_notice_test_suite/results_tracker.csv,All mismatches categorized and linked to defect ID when opened
+TC-VN-003,1,Export NSD source notice text for this scenario,/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-003.txt,NSD text snapshot captured and version tagged
+TC-VN-003,2,Generate notice via member create agent flow,/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-003.txt,Generated notice saved and timestamped
+TC-VN-003,3,Run rule-by-rule comparison using comparison_rules.csv,/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-003.csv,All critical and high rules pass; medium reviewed
+TC-VN-003,4,Perform native-language Vietnamese review,/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-003.txt,"Grammar, terminology, and intent accepted"
+TC-VN-003,5,Log defects and final status in results tracker,/vietnamese_notice_test_suite/results_tracker.csv,All mismatches categorized and linked to defect ID when opened
+TC-VN-004,1,Export NSD source notice text for this scenario,/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-004.txt,NSD text snapshot captured and version tagged
+TC-VN-004,2,Generate notice via member create agent flow,/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-004.txt,Generated notice saved and timestamped
+TC-VN-004,3,Run rule-by-rule comparison using comparison_rules.csv,/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-004.csv,All critical and high rules pass; medium reviewed
+TC-VN-004,4,Perform native-language Vietnamese review,/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-004.txt,"Grammar, terminology, and intent accepted"
+TC-VN-004,5,Log defects and final status in results tracker,/vietnamese_notice_test_suite/results_tracker.csv,All mismatches categorized and linked to defect ID when opened
+TC-VN-005,1,Export NSD source notice text for this scenario,/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-005.txt,NSD text snapshot captured and version tagged
+TC-VN-005,2,Generate notice via member create agent flow,/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-005.txt,Generated notice saved and timestamped
+TC-VN-005,3,Run rule-by-rule comparison using comparison_rules.csv,/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-005.csv,All critical and high rules pass; medium reviewed
+TC-VN-005,4,Perform native-language Vietnamese review,/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-005.txt,"Grammar, terminology, and intent accepted"
+TC-VN-005,5,Log defects and final status in results tracker,/vietnamese_notice_test_suite/results_tracker.csv,All mismatches categorized and linked to defect ID when opened
+TC-VN-006,1,Export NSD source notice text for this scenario,/vietnamese_notice_test_suite/artifacts/nsd_source/TC-VN-006.txt,NSD text snapshot captured and version tagged
+TC-VN-006,2,Generate notice via member create agent flow,/vietnamese_notice_test_suite/artifacts/generated_notice/TC-VN-006.txt,Generated notice saved and timestamped
+TC-VN-006,3,Run rule-by-rule comparison using comparison_rules.csv,/vietnamese_notice_test_suite/artifacts/comparison/TC-VN-006.csv,All critical and high rules pass; medium reviewed
+TC-VN-006,4,Perform native-language Vietnamese review,/vietnamese_notice_test_suite/artifacts/language_review/TC-VN-006.txt,"Grammar, terminology, and intent accepted"
+TC-VN-006,5,Log defects and final status in results tracker,/vietnamese_notice_test_suite/results_tracker.csv,All mismatches categorized and linked to defect ID when opened
